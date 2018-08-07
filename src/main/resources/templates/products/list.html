@@ -1,6 +1,14 @@
 <!DOCTYPE html >
 <html layout:decorator="shared/homelayout"
 	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Info</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homelayout.css}" />
+    <th:block layout:fragment="header"></th:block>
+</head>
+
 <body>
 	<th:block layout:fragment="header">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/studentlist.css}" />
