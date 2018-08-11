@@ -59,9 +59,5 @@ public class Supplier implements Serializable {
     }
 
 
-    @ManyToOne
-    private List<Product> products;
-    
-
 
 }
