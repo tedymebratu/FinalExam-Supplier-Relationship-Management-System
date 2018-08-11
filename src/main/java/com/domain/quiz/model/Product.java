@@ -25,7 +25,7 @@ public class Product implements Serializable {
     Date dateSupplied;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "supplier_id", nullable = true)
     private Supplier supplier;
 
