@@ -1,11 +1,9 @@
 package com.domain.quiz.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * The persistent class for the ACCOUNTS database table.
@@ -59,4 +57,11 @@ public class Supplier implements Serializable {
     public void setContactPhoneNumber(String contactPhoneNumber) {
         this.contactPhoneNumber = contactPhoneNumber;
     }
+
+
+    @ManyToOne
+    private List<Product> products;
+    
+
+
 }

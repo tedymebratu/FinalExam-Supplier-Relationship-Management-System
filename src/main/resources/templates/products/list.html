@@ -12,13 +12,13 @@
 		<a href="/" id="linkBackHome" >Back to home</a><br/><br/>
 		<table class="table table-striped">
 			<thead>
-				<th>Id</th>
+				<th>productId</th>
 				<th>Product Number</th>
 				<th>Name</th>
 				<th>Supplier</th>
 				<th>unitPrice</th>
 
-				<th>unit Price</th>
+
 				<th>quantityInStock</th>
 				<th>dateSupplied</th>
 
@@ -30,12 +30,10 @@
 			<tbody>
 				<tr th:each="product : ${products}">
 					<td th:text="${product.productId}"></td>
-
 					<td th:text="${product.productNumber}"></td>
 					<td th:text="${product.name}"></td>
 					<td th:text="${product.supplier.name}"></td>
 					<td th:text="${product.unitPrice}"></td>
-
 					<td th:text="${product.quantityInStock}"></td>
 					<td th:text="${product.dateSupplied}"></td>
 
