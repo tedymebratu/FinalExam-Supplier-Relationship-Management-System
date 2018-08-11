@@ -1,0 +1,49 @@
+<html layout:decorator="shared/homelayout"	>
+
+
+<body>
+	<th:block layout:fragment="header">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/studentlist.css}" />
+	</th:block>
+	
+	<th:block layout:fragment="content">
+		<h2>Suppliers List</h2> <br/>
+		<a href="/suppliers/new">Create a Supplier</a>
+		<a href="/" id="linkBackHome" >Back to home</a><br/><br/>
+		<table class="table table-striped">
+			<thead>
+				<th>supplierId</th>
+				<th>supplierNumber</th>
+				<th>name</th>
+				<th>contactPhoneNumber</th>
+				<th>Actions</th>
+
+
+			</thead>
+			<tbody>
+				<tr th:each="supplier : ${suppliers}">
+					<td th:text="${supplier.supplierId}"></td>
+					<td th:text="${supplier.supplierNumber}"></td>
+					<td th:text="${supplier.name}"></td>
+					<td th:text="${supplier.contactPhoneNumber}"></td>
+
+
+
+
+
+
+
+					<td>
+						<a th:href="@{'/suppliers/edit/' + ${supplier.supplierId}}">Edit</a>&nbsp;
+						<a th:href="@{'/suppliers/delete/' + ${supplier.supplierId}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>

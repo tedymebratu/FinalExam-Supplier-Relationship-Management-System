@@ -10,25 +10,7 @@
 		<h2>Product Info</h2> <br/>
 
 		<form class="form-horizontal" action="/" method="POST" th:object="${product}">
-			<input type="hidden" name="id" th:value="${id}" />
-
-			<div class="form-group">
-				<label class="control-label col-sm-2"> pid:</label>
-				<label th:if="${#fields.hasErrors('pid')}" th:errors="*{pid}"
-					   class="validation-message"></label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="pid" name="pid"  th:field="*{pid}">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2"> name:</label>
-				<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-					   class="validation-message"></label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="name" name="name"  th:field="*{name}">
-				</div>
-			</div>
+			<input type="hidden" name="productId" th:value="${productId}" />
 
 			<div class="form-group">
 				<label class="control-label col-sm-2"> productNumber:</label>
@@ -39,22 +21,50 @@
 				</div>
 			</div>
 
+
 			<div class="form-group">
-				<label class="control-label col-sm-2"> unitPrice:</label>
-				<label th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"
+				<label class="control-label col-sm-2"> name:</label>
+				<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
 					   class="validation-message"></label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="unitPrice" name="unitPrice"  th:field="*{unitPrice}">
+					<input type="text" class="form-control" id="name" name="name"  th:field="*{name}">
 				</div>
 			</div>
 
 
 			<div class="form-group">
-				<label class="control-label col-sm-2"> dateMdf:</label>
-				<label th:if="${#fields.hasErrors('dateMdf')}" th:errors="*{dateMdf}"
+				<label class="control-label col-sm-2"> unitPrice:</label>
+				<label th:if="${#fields.hasErrors('name')}" th:errors="*{unitPrice}"
 					   class="validation-message"></label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="dateMdf" name="dateMdf"  th:field="*{dateMdf}">
+					<input type="text" class="form-control" id="unitPrice" name="unitPrice"  th:field="*{unitPrice}">
+				</div>
+
+			</div>
+
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="suppliers">Suppliers:</label>
+				<label th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
+					   class="validation-message"></label>
+				<div class="col-sm-10">
+
+					<select class="form-control" th:field="${product.supplier}"  id="supplier" name="supplier">
+
+						<option th:each="operator : ${suppliers}" th:value="${operator.supplierId}" th:text="${operator.name}"></option>
+					</select>
+
+
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2"> dateSupplied:</label>
+				<label th:if="${#fields.hasErrors('dateSupplied')}" th:errors="*{dateSupplied}"
+					   class="validation-message"></label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="dateSupplied" name="dateSupplied"  th:field="*{dateSupplied}">
 				</div>
 			</div>
 
@@ -68,7 +78,7 @@
 		</form>
 		<br/>
 		
-		<a href="/persons">Product List</a>
+		<a href="/">Product List</a>
 	</th:block>
 	
 	<th:block layout:fragment="footer">

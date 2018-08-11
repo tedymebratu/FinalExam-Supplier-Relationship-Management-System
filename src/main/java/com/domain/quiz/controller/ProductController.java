@@ -3,6 +3,7 @@ package com.domain.quiz.controller;
 
 import com.domain.quiz.model.Product;
 import com.domain.quiz.service.impl.ProductServiceImpl;
+import com.domain.quiz.service.impl.SupplierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class ProductController {
 	@Autowired
 	private ProductServiceImpl productService;
 
+	@Autowired
+	private SupplierServiceImpl supplierService;
+
 
 
 
@@ -38,7 +42,7 @@ public class ProductController {
 	@RequestMapping(value="/product/new", method = RequestMethod.GET)
 	public String create(Model model){
 
-
+		model.addAttribute("suppliers", supplierService.findAll());
 		model.addAttribute("product", new Product());
 
 
@@ -61,6 +65,7 @@ public class ProductController {
 	@RequestMapping(value="/product/edit/{id}", method = RequestMethod.GET)
 	public String view(@PathVariable Long id, Model model)
     {
+        model.addAttribute("suppliers", supplierService.findAll());
 
 		model.addAttribute("product", productService.findOne(id).get());
 		return "products/edit";

@@ -12,38 +12,64 @@ import java.util.Date;
 @Entity
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
-    Long pid;
+
+
+    int quantityInStock;
+
+
     Long productNumber;
     String name;
     Double unitPrice;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    Date dateMdf;
+    Date dateSupplied;
 
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "supplier_id", nullable = true)
+    private Supplier supplier;
+
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long productId;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+
+    public void setQuantityInStock(int quantityInStock) {
+        this.quantityInStock = quantityInStock;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
     public Long getId() {
-        return id;
+        return productId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.productId = id;
     }
 
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
-    }
 
     public Long getProductNumber() {
         return productNumber;
@@ -69,11 +95,11 @@ public class Product implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public Date getDateMdf() {
-        return dateMdf;
+    public Date getDateSupplied() {
+        return dateSupplied;
     }
 
-    public void setDateMdf(Date dateMdf) {
-        this.dateMdf = dateMdf;
+    public void setDateSupplied(Date dateSupplied) {
+        this.dateSupplied = dateSupplied;
     }
 }
