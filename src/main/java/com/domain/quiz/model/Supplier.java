@@ -5,19 +5,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * The persistent class for the ACCOUNTS database table.
- */
+
 @Entity
 public class Supplier implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    int supplierNumber;
-    String name;
-    String contactPhoneNumber;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long supplierId;
+
+    private int supplierNumber;
+    private String name;
+    private String contactPhoneNumber;
+
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.PERSIST)
+    private List<Product> products;
+
 
     public Supplier() {
     }
@@ -57,10 +60,6 @@ public class Supplier implements Serializable {
     public void setContactPhoneNumber(String contactPhoneNumber) {
         this.contactPhoneNumber = contactPhoneNumber;
     }
-
-
-    @OneToMany(mappedBy = "supplier")
-    private List<Product> products;
 
 
     public List<Product> getProducts() {

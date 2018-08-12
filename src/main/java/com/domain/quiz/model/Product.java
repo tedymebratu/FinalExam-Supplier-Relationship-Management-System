@@ -6,17 +6,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * The persistent class for the ACCOUNTS database table.
- */
 @Entity
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
 
-    int quantityInStock;
-
-
+    private int quantityInStock;
     Long productNumber;
     String name;
     Double unitPrice;
@@ -26,7 +24,7 @@ public class Product implements Serializable {
 
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", nullable = true)
+    @JoinColumn(name = "supplierId", nullable = true)
     private Supplier supplier;
 
 
@@ -38,9 +36,7 @@ public class Product implements Serializable {
         this.supplier = supplier;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
